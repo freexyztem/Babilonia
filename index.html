@@ -40,7 +40,10 @@
 
         //BABYLON.SceneLoader.ImportMeshAsync("", "https://assets.babylonjs.com/meshes/", "box.babylon");
 	//BABYLON.SceneLoader.ImportMeshAsync("", "https://freexyztem.github.io/Babilonia/", "test.glb");
-	BABYLON.SceneLoader.ImportMeshAsync("", "https://freexyztem.github.io/Babilonia/", "box.babylon");
+	const box = BABYLON.SceneLoader.ImportMeshAsync("", "https://freexyztem.github.io/Babilonia/", "box.babylon");
+	box.scaling.x = 2;
+	box.scaling.y = 1.5;
+	box.scaling.z = 3;
 
         const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 15, new BABYLON.Vector3(0, 0, 0));
         camera.attachControl(canvas, true);
