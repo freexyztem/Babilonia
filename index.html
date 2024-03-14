@@ -42,7 +42,7 @@
 	BABYLON.SceneLoader.ImportMeshAsync("", "", "sacapresillas.glb").then((result) => {
 	    result.meshes[1].position.x = 20;
 	    const myMesh1 = scene.getMeshByName("metal1");
-	    //myMesh1.rotation.y = Math.PI / 2;
+	    myMesh1.rotation.y = Math.PI / 2;
 	});
 	//BABYLON.SceneLoader.ImportMeshAsync("", "https://freexyztem.github.io/Babilonia/", "box.babylon");
 	
