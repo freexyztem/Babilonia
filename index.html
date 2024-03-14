@@ -42,7 +42,7 @@
 	BABYLON.SceneLoader.ImportMeshAsync("", "", "sacapresillas2.glb").then((result) => {
 	    //result.meshes[0].position.x = 20;
 	    const myMesh1 = scene.getMeshByName("metal1");
-	    myMesh1.rotation.y = Math.PI / 2;
+	    //myMesh1.rotation.y = Math.PI / 2;
 	});
 	
 	
@@ -55,8 +55,11 @@
 
         const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));
 	const lightz = new BABYLON.HemisphericLight("lightz", new BABYLON.Vector3(-1, -1, -1));
-
-
+	      
+	const shadowGenerator = new BABYLON.ShadowGenerator(1024, light);
+	shadowGenerator.addShadowCaster(myMesh1, true);
+	ground.receiveShadows = myMesh1;
+	      
         return scene;
       };
 
