@@ -42,9 +42,20 @@
         camera.attachControl(canvas, true);
 	      
 	BABYLON.SceneLoader.ImportMeshAsync("", "", "sacapresillas2.glb").then((result) => {
-	    //result.meshes[0].position.x = 20;
-	    const metal1 = scene.getMeshByName("metal1");
-	    //myMesh1.rotation.y = Math.PI / 2;
+	    const sacapresilla = result.meshes[0];
+	        shadowGenerator.addShadowCaster(sacapresilla, true);
+	        const m1 = scene.getMeshByName("metal1");
+	        const m2 = scene.getMeshByName("metal2");
+	        const p1 = scene.getMeshByName("plastico1");
+	        const p2 = scene.getMeshByName("plastico2");
+	        const plane = scene.getMeshByName("Plane");
+	        //plane.receiveShadows = true;
+	
+	        
+	        //sacapresillas.material = myMaterial;
+	        plane.material = myMaterial;
+	        
+	        //metal1.position = new BABYLON.Vector3(2, 0, 2); 
 	});
 	
 	
@@ -54,13 +65,13 @@
 	//scene.clearColor = new BABYLON.Color3(1, 1, 1);
         //scene.ambientColor = new BABYLON.Color3.White();
 
-        const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));
+        //const lightx = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));   
+	const  light = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -1, 1), scene);
+	light.position = new BABYLON.Vector3(0, 50, -100);
 	light.intensity =7.1;
-	//const lightz = new BABYLON.HemisphericLight("lightz", new BABYLON.Vector3(-1, -1, -1));
-	      
+	
+	// Shadow generator
 	const shadowGenerator = new BABYLON.ShadowGenerator(1024, light);
-	shadowGenerator.addShadowCaster(myMesh1, true);
-	ground.receiveShadows = myMesh1;
 	      
         return scene;
       };
