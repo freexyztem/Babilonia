@@ -38,23 +38,25 @@
       const createScene = function () {
         const scene = new BABYLON.Scene(engine);
 
-        
+        const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 50, new BABYLON.Vector3(0, 0, 0));
+        camera.attachControl(canvas, true);
+	      
 	BABYLON.SceneLoader.ImportMeshAsync("", "", "sacapresillas2.glb").then((result) => {
 	    //result.meshes[0].position.x = 20;
-	    const myMesh1 = scene.getMeshByName("metal1");
+	    const metal1 = scene.getMeshByName("metal1");
 	    //myMesh1.rotation.y = Math.PI / 2;
 	});
 	
 	
 
-        const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 15, new BABYLON.Vector3(0, 0, 0));
-        camera.attachControl(canvas, true);
+        
 	
 	//scene.clearColor = new BABYLON.Color3(1, 1, 1);
         //scene.ambientColor = new BABYLON.Color3.White();
 
         const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0));
-	const lightz = new BABYLON.HemisphericLight("lightz", new BABYLON.Vector3(-1, -1, -1));
+	light.intensity =7.1;
+	//const lightz = new BABYLON.HemisphericLight("lightz", new BABYLON.Vector3(-1, -1, -1));
 	      
 	const shadowGenerator = new BABYLON.ShadowGenerator(1024, light);
 	shadowGenerator.addShadowCaster(myMesh1, true);
