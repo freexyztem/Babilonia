@@ -41,7 +41,7 @@
         const camera = new BABYLON.ArcRotateCamera("camera", -Math.PI / 2, Math.PI / 2.5, 50, new BABYLON.Vector3(0, 0, 0));
         camera.attachControl(canvas, true);
 	      
-	BABYLON.SceneLoader.ImportMeshAsync("", "", "sacapresillas2.glb").then((result) => {
+	BABYLON.SceneLoader.ImportMeshAsync("", "", "sacapresillas3.glb").then((result) => {
 	    const sacapresilla = result.meshes[0];
 	        shadowGenerator.addShadowCaster(sacapresilla, true);
 	        const m1 = scene.getMeshByName("metal1");
